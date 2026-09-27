@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  display: block;
+  width: min(280px, 68vw);
+  height: auto;
+}

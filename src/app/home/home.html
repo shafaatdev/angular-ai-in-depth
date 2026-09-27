@@ -1,0 +1,54 @@
+<main class="workspace">
+  <app-side-navigation
+    [collapsed]="sidebarCollapsed()"
+    [conversations]="conversations()"
+    [activeConversationId]="activeConversationId()"
+    (collapsedChange)="sidebarCollapsed.set($event)"
+    (newChat)="startNewChat()"
+    (conversationSelected)="selectConversation($event)"
+    (logout)="logout()"
+  />
+
+  <section class="chat-panel" [class.is-empty]="!activeConversation()" aria-label="Chat">
+    <div class="chat-stage">
+      @if (activeConversation(); as conversation) {
+        <app-conversation-thread [conversation]="conversation" />
+      } @else {
+        <app-empty-state />
+      }
+    </div>
+
+    <form class="composer" (submit)="sendMessage($event)">
+      <div class="composer-box">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8" />
+          <path d="m16 16 4 4" />
+        </svg>
+        <label class="visually-hidden" for="chat-prompt">Message Angular AI</label>
+        <textarea
+          id="chat-prompt"
+          rows="1"
+          placeholder="Ask anything..."
+          [value]="draft()"
+          (input)="updateDraft($event)"
+          (keydown)="handleComposerKeydown($event)"
+        ></textarea>
+        <button class="send-button" type="submit" aria-label="Send message" [disabled]="!draft().trim()">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V5" />
+            <path d="m6 11 6-6 6 6" />
+          </svg>
+        </button>
+      </div>
+      @if (activeConversation()) {
+        <p class="composer-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 2.8 20h18.4L12 3Z" />
+            <path d="M12 9v4m0 3h.01" />
+          </svg>
+          Give our AI as much context as possible, to get the best results. If an error occurs, please try again after a few seconds.
+        </p>
+      }
+    </form>
+  </section>
+</main>

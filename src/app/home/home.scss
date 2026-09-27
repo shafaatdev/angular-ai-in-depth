@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.workspace {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--chat-background);
+}
+
+.chat-panel {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex: 1;
+  flex-direction: column;
+}
+
+.chat-stage {
+  min-height: 0;
+  flex: 1;
+}
+
+.is-empty {
+  justify-content: center;
+}
+
+.is-empty .chat-stage {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-bottom: 34px;
+}
+
+.composer {
+  width: min(610px, calc(100% - 48px));
+  flex: 0 0 auto;
+  align-self: center;
+  margin: 0 0 18px;
+}
+
+.is-empty .composer {
+  margin-bottom: 0;
+}
+
+.composer-box {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: linear-gradient(var(--chat-surface), var(--chat-surface)) padding-box,
+    linear-gradient(110deg, var(--chat-accent), var(--chat-accent-secondary)) border-box;
+}
+
+.search-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--chat-accent-secondary);
+  stroke-linecap: round;
+  stroke-width: 1.6;
+}
+
+textarea {
+  width: 100%;
+  min-width: 0;
+  max-height: 120px;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--chat-text);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+textarea::placeholder {
+  color: var(--chat-muted);
+}
+
+.composer-box:focus-within {
+  box-shadow: 0 0 0 2px rgb(180 156 255 / 35%);
+}
+
+.send-button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--chat-accent);
+  color: white;
+  cursor: pointer;
+}
+
+.send-button:disabled {
+  cursor: default;
+  opacity: .72;
+}
+
+.send-button:not(:disabled):hover {
+  filter: brightness(1.15);
+}
+
+.send-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.send-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.composer-note {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: var(--chat-muted);
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.composer-note svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 640px) {
+  .is-empty .chat-stage {
+    margin-bottom: 26px;
+  }
+
+  .composer {
+    width: calc(100% - 28px);
+    margin-bottom: 12px;
+  }
+
+  .composer-note {
+    font-size: 9px;
+  }
+}

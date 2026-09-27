@@ -1,0 +1,32 @@
+@use './theme';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--chat-background);
+  color: var(--chat-text);
+  font-family: 'Inter', sans-serif;
+}
+
+button,
+textarea,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+

@@ -1,0 +1,20 @@
+<section class="thread" [attr.aria-label]="conversation().title" aria-live="polite">
+  @for (message of conversation().messages; track message.id) {
+    <article class="message" [class.user-message]="message.role === 'user'">
+      @if (message.role === 'assistant') {
+        <span class="avatar assistant-avatar" aria-label="Angular AI">
+          <img ngSrc="/images/angular-ai-course-logo.png" width="448" height="181" alt="" />
+        </span>
+      }
+      <p class="message-content">{{ message.content }}</p>
+      @if (message.role === 'user') {
+        <span class="avatar user-avatar" aria-label="You">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 20a7 7 0 0 1 14 0" />
+          </svg>
+        </span>
+      }
+    </article>
+  }
+</section>

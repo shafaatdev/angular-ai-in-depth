@@ -1,0 +1,70 @@
+<aside class="sidebar" [class.collapsed]="collapsed()">
+  <header class="sidebar-header">
+    <button class="brand" type="button" aria-label="Angular AI home" (click)="newChat.emit()">
+      <span class="brand-crop">
+        <img
+          ngSrc="/images/angular-ai-course-logo.png"
+          width="448"
+          height="181"
+          priority
+          alt=""
+        />
+      </span>
+    </button>
+    <button
+      class="icon-button collapse-button"
+      type="button"
+      [attr.aria-label]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
+      [attr.title]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
+      (click)="collapsedChange.emit(!collapsed())"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="5" width="16" height="14" rx="2" />
+        <path d="M9 5v14" />
+      </svg>
+    </button>
+  </header>
+
+  <div class="actions">
+    <button class="nav-action" type="button" aria-label="New Chat" title="New Chat" (click)="newChat.emit()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20h8" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" />
+      </svg>
+      @if (!collapsed()) { <span>New Chat</span> }
+    </button>
+    <button class="nav-action" type="button" aria-label="Search in Chat" title="Search in Chat" (click)="toggleSearch()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8" />
+        <path d="m16 16 4 4" />
+      </svg>
+      @if (!collapsed()) { <span>Search in Chat</span> }
+    </button>
+  </div>
+
+  @if (!collapsed()) {
+    @if (searchOpen()) {
+      <label class="search-box">
+        <span class="visually-hidden">Search conversations</span>
+        <input type="search" placeholder="Search conversations" [value]="searchTerm()" (input)="updateSearch($event)" />
+      </label>
+    }
+    <app-chat-history
+      [conversations]="conversations()"
+      [activeConversationId]="activeConversationId()"
+      [searchTerm]="searchTerm()"
+      (conversationSelected)="conversationSelected.emit($event)"
+    />
+  }
+
+  <footer class="sidebar-footer">
+    <button class="nav-action logout-action" type="button" aria-label="Log out" title="Log out" (click)="logout.emit()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10 17l5-5-5-5" />
+        <path d="M15 12H3" />
+        <path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" />
+      </svg>
+      @if (!collapsed()) { <span>Log out</span> }
+    </button>
+  </footer>
+</aside>

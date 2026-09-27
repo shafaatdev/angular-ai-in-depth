@@ -1,0 +1,18 @@
+<section class="history" aria-label="Recent conversations">
+  <h2>Recent</h2>
+  <nav aria-label="Chat history">
+    @for (conversation of filteredConversations(); track conversation.id) {
+      <button
+        type="button"
+        class="history-item"
+        [class.active]="activeConversationId() === conversation.id"
+        [attr.aria-current]="activeConversationId() === conversation.id ? 'page' : null"
+        (click)="conversationSelected.emit(conversation.id)"
+      >
+        {{ conversation.title }}
+      </button>
+    } @empty {
+      <p class="empty-result">No matching conversations</p>
+    }
+  </nav>
+</section>
