@@ -7,7 +7,7 @@ import { EmptyState } from './components/empty-state/empty-state';
 import { SideNavigation } from './components/side-navigation/side-navigation';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   imports: [ConversationThread, EmptyState, SideNavigation],
   templateUrl: './home.html',
   styleUrl: './home.scss',

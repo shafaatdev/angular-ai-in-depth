@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 import { Conversation } from '../../models/conversation.model';
 
 @Component({
-  selector: 'app-chat-history',
+  selector: 'chat-history',
   imports: [],
   templateUrl: './chat-history.html',
   styleUrl: './chat-history.scss',

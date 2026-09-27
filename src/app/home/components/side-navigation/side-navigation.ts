@@ -4,7 +4,7 @@ import { ChatHistory } from '../chat-history/chat-history';
 import { Conversation } from '../../models/conversation.model';
 
 @Component({
-  selector: 'app-side-navigation',
+  selector: 'side-navigation',
   imports: [NgOptimizedImage, ChatHistory],
   templateUrl: './side-navigation.html',
   styleUrl: './side-navigation.scss',

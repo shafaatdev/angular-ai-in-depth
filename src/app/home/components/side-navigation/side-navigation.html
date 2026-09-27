@@ -49,7 +49,7 @@
         <input type="search" placeholder="Search conversations" [value]="searchTerm()" (input)="updateSearch($event)" />
       </label>
     }
-    <app-chat-history
+    <chat-history
       [conversations]="conversations()"
       [activeConversationId]="activeConversationId()"
       [searchTerm]="searchTerm()"

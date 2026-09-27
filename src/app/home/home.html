@@ -1,5 +1,5 @@
 <main class="workspace">
-  <app-side-navigation
+  <side-navigation
     [collapsed]="sidebarCollapsed()"
     [conversations]="conversations()"
     [activeConversationId]="activeConversationId()"
@@ -12,9 +12,9 @@
   <section class="chat-panel" [class.is-empty]="!activeConversation()" aria-label="Chat">
     <div class="chat-stage">
       @if (activeConversation(); as conversation) {
-        <app-conversation-thread [conversation]="conversation" />
+        <conversation-thread [conversation]="conversation" />
       } @else {
-        <app-empty-state />
+        <empty-state />
       }
     </div>
 

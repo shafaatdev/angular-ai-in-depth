@@ -3,7 +3,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { Conversation } from '../../models/conversation.model';
 
 @Component({
-  selector: 'app-conversation-thread',
+  selector: 'conversation-thread',
   imports: [NgOptimizedImage],
   templateUrl: './conversation-thread.html',
   styleUrl: './conversation-thread.scss',
