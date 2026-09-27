@@ -1,3 +1,5 @@
+@use '../../../../responsive' as responsive;
+
 :host {
   position: relative;
   z-index: 2;
@@ -162,7 +164,7 @@
   clip-path: inset(50%);
 }
 
-@media (max-width: 640px) {
+@include responsive.mobile {
   :host:not(:has(.collapsed)) {
     position: absolute;
     inset: 0 auto 0 0;

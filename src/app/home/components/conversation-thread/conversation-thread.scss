@@ -1,3 +1,6 @@
+@use '../../../../layout' as layout;
+@use '../../../../responsive' as responsive;
+
 :host {
   display: block;
   width: 100%;
@@ -8,9 +11,9 @@
 
 .thread {
   display: grid;
-  width: min(650px, calc(100% - 48px));
+  @include layout.content-column(650px);
+
   gap: 14px;
-  margin: 0 auto;
   padding: 36px 0 28px;
 }
 
@@ -71,9 +74,10 @@
   stroke-width: 1.5;
 }
 
-@media (max-width: 640px) {
+@include responsive.mobile {
   .thread {
-    width: calc(100% - 28px);
+    @include layout.content-column(650px, 28px);
+
     padding-top: 22px;
   }
 
