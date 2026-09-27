@@ -4,6 +4,7 @@ export const conversations: Conversation[] = [
   {
     id: 'angular-components',
     title: 'How to create component in Angular',
+    promptId: 'angular-tutor',
     messages: [
       {
         id: 'components-user-1',
@@ -20,6 +21,7 @@ export const conversations: Conversation[] = [
   {
     id: 'angular-routing',
     title: 'Angular routing how it works',
+    promptId: 'angular-tutor',
     messages: [
       {
         id: 'routing-user-1',
@@ -36,6 +38,7 @@ export const conversations: Conversation[] = [
   {
     id: 'angular-services',
     title: 'What is a service in Angular',
+    promptId: 'angular-tutor',
     messages: [
       {
         id: 'services-user-1',

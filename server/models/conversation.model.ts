@@ -7,6 +7,7 @@ export type ChatMessage = {
 export type Conversation = {
   id: string;
   title: string;
+  promptId: string;
   messages: ChatMessage[];
 };
 
