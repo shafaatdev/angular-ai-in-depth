@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { ChatHistory } from '../chat-history/chat-history';
-import { Conversation } from '../../models/conversation.model';
+import { ConversationSummary } from '../../models/conversation-summary.model';
 
 @Component({
   selector: 'side-navigation',
@@ -12,7 +12,7 @@ import { Conversation } from '../../models/conversation.model';
 })
 export class SideNavigation {
   collapsed = input(false);
-  conversations = input.required<Conversation[]>();
+  conversations = input.required<ConversationSummary[]>();
   activeConversationId = input<string | null>(null);
   collapsedChange = output<boolean>();
   newChat = output();

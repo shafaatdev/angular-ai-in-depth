@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { Conversation } from '../../models/conversation.model';
+import { ConversationSummary } from '../../models/conversation-summary.model';
 
 @Component({
   selector: 'chat-history',
@@ -9,7 +9,7 @@ import { Conversation } from '../../models/conversation.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatHistory {
-  conversations = input.required<Conversation[]>();
+  conversations = input.required<ConversationSummary[]>();
   activeConversationId = input<string | null>(null);
   searchTerm = input('');
   conversationSelected = output<string>();
@@ -19,8 +19,7 @@ export class ChatHistory {
     if (!query) return this.conversations();
 
     return this.conversations().filter((conversation) =>
-      conversation.title.toLowerCase().includes(query) ||
-      conversation.messages.some((message) => message.content.toLowerCase().includes(query))
+      conversation.title.toLowerCase().includes(query)
     );
   });
 }

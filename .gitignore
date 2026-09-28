@@ -39,7 +39,8 @@ testem.log
 __screenshots__/
 
 # Environment variables
-.env
+.env.example
+.env.local
 
 # System files
 .DS_Store
