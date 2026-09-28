@@ -39,6 +39,7 @@ testem.log
 __screenshots__/
 
 # Environment variables
+.env
 .env.example
 .env.local
 

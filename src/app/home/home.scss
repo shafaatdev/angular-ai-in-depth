@@ -27,6 +27,38 @@
   flex: 1;
 }
 
+.loading-indicator,
+.error-message {
+  @include layout.content-column(610px);
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 12px auto;
+  color: var(--chat-muted);
+  font-size: 12px;
+}
+
+.loading-spinner {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  border: 2px solid var(--chat-muted);
+  border-top-color: var(--chat-accent-secondary);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.error-message {
+  color: #b42318;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .is-empty {
   justify-content: center;
 }

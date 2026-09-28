@@ -16,6 +16,15 @@
       } @else {
         <empty-state />
       }
+      @if (isSending() && loadingConversationId() === activeConversationId()) {
+        <p class="loading-indicator" role="status">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          Angular AI is thinking...
+        </p>
+      }
+      @if (errorMessage(); as error) {
+        <p class="error-message" role="alert">{{ error }}</p>
+      }
     </div>
 
     <form class="composer" (submit)="sendMessage($event)">
@@ -33,7 +42,12 @@
           (input)="updateDraft($event)"
           (keydown)="handleComposerKeydown($event)"
         ></textarea>
-        <button class="send-button" type="submit" aria-label="Send message" [disabled]="!draft().trim()">
+        <button
+          class="send-button"
+          type="submit"
+          aria-label="Send message"
+          [disabled]="!draft().trim() || isSending()"
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 19V5" />
             <path d="m6 11 6-6 6 6" />
